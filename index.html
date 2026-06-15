@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoprite Customer Feedback | User Survey</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f0f2f5 0%, #e2e8f0 100%);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* University Header */
+    .uni-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .uni-header h1 {
+      font-size: 1.8rem;
+      color: #8b2c1c;
+      letter-spacing: -0.5px;
+    }
+
+    .uni-header .uni-name {
+      font-size: 0.9rem;
+      color: #2c5a2e;
+      font-weight: 500;
+    }
+
+    .uni-header .country {
+      font-size: 0.8rem;
+      color: #5a6e7c;
+    }
+
+    /* Form Card */
+    .form-card {
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #1a2c3e;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 1rem 0;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #f4b836;
+      display: inline-block;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      color: #1e3a4d;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e0e7ed;
+      border-radius: 28px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: white;
+      transition: all 0.2s;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: #f4b836;
+      box-shadow: 0 0 0 3px rgba(244,184,54,0.2);
+    }
+
+    textarea {
+      border-radius: 20px;
+      resize: vertical;
+    }
+
+    .rating-hint {
+      font-size: 0.7rem;
+      color: #7f8c8d;
+      margin-top: 0.25rem;
+    }
+
+    hr {
+      margin: 1.2rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, #e0e7ed, transparent);
+    }
+
+    button {
+      background: #f4b836;
+      border: none;
+      width: 100%;
+      padding: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 44px;
+      cursor: pointer;
+      margin-top: 0.8rem;
+      color: #1e2f3e;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background: #e0a123;
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 24px;
+      margin-top: 1.5rem;
+      text-align: center;
+      display: none;
+      border-left: 4px solid #28a745;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      color: #8ba0b0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="uni-header">
+
+    <p style="margin-top: 0.8rem; font-style: italic;">Shoprite Mbabane • Customer Experience Survey</p>
+  </div>
+
+  <div class="form-card">
+    <h2>📋 Share Your Experience</h2>
+    <p style="color: #5a6e7c; margin-bottom: 1.5rem;">Your feedback helps us serve you better. All responses are confidential.</p>
+
+    <!-- Section A: Demographics -->
+    <h3>Section A: About You</h3>
+    
+    <div class="form-group">
+      <label>⚧ What is your gender?</label>
+      <select id="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>🎂 What is your age group?</label>
+      <select id="ageGroup">
+        <option>18-25</option>
+        <option>26-35</option>
+        <option>36-45</option>
+        <option>46 and above</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>🛒 How often do you shop at Shoprite Mbabane?</label>
+      <select id="frequency">
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Monthly</option>
+        <option>Less than once a month</option>
+      </select>
+    </div>
+
+    <hr>
+
+    <!-- Section B: Customer Service Experience -->
+    <h3>Section B: Customer Service Experience</h3>
+    <div class="rating-hint">1 = Strongly Disagree &nbsp;|&nbsp; 3 = Neutral &nbsp;|&nbsp; 5 = Strongly Agree</div>
+
+    <div class="form-group">
+      <label>😊 Employees are friendly and polite</label>
+      <select id="q1">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>⚡ Service speed (checkout and assistance) is quick</label>
+      <select id="q2">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>🛠️ Shoprite handles customer complaints efficiently</label>
+      <select id="q3">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>⏳ Queues move at a reasonable pace</label>
+      <select id="q4">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+
+    <hr>
+
+    <!-- Section C: Needs, Value, Responsiveness -->
+    <h3>Section C: Needs, Value & Responsiveness</h3>
+
+    <div class="form-group">
+      <label>🛍️ How well does Shoprite's service meet your shopping needs?</label>
+      <select id="needs">
+        <option>1 - Very poorly</option>
+        <option>2 - Poorly</option>
+        <option>3 - Adequately</option>
+        <option>4 - Well</option>
+        <option>5 - Very well</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>💰 How would you rate the value for money?</label>
+      <select id="valueMoney">
+        <option>1 - Very poor</option>
+        <option>2 - Poor</option>
+        <option>3 - Fair</option>
+        <option>4 - Good</option>
+        <option>5 - Excellent</option>
+      </select>
+    </div>
+
+    <hr>
+
+    <!-- Section D: Overall Satisfaction -->
+    <h3>Section D: Overall Satisfaction & Future Insights</h3>
+
+    <div class="form-group">
+      <label>🌟 Overall, how satisfied are you with customer service?</label>
+      <select id="overallSat">
+        <option>1 - Very dissatisfied</option>
+        <option>2 - Dissatisfied</option>
+        <option>3 - Neutral</option>
+        <option>4 - Satisfied</option>
+        <option>5 - Very satisfied</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>💬 What features or service would you like to see? (e.g., faster checkout, home delivery, mobile app)</label>
+      <textarea id="featuresText" rows="2" placeholder="Share your suggestions..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>📝 Additional comments or suggestions</label>
+      <textarea id="commentsText" rows="2" placeholder="Any other feedback..."></textarea>
+    </div>
+
+    <button id="submitBtn">✅ Submit Your Feedback</button>
+
+    <div id="successMsg" class="success-message">
+      🎉 Thank you for your feedback! Your response has been recorded and sent to management.
+    </div>
+  </div>
+
+  <div class="footer-note">
+    🔒 Your feedback is anonymous and confidential
+  </div>
+</div>
+
+<script>
+  // Storage key for shared data between user and admin
+  const STORAGE_KEY = "shoprite_feedback_data";
+
+  // Load existing feedback
+  function loadFeedback() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  }
+
+  // Save feedback
+  function saveFeedback(feedbackArray) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackArray));
+  }
+
+  // Add new feedback entry
+  function submitFeedback() {
+    const newEntry = {
+      id: Date.now(),
+      timestamp: new Date().toLocaleString(),
+      gender: document.getElementById('gender').value,
+      ageGroup: document.getElementById('ageGroup').value,
+      frequency: document.getElementById('frequency').value,
+      q1: document.getElementById('q1').value,
+      q2: document.getElementById('q2').value,
+      q3: document.getElementById('q3').value,
+      q4: document.getElementById('q4').value,
+      needs: document.getElementById('needs').value,
+      valueMoney: document.getElementById('valueMoney').value,
+      overallSat: document.getElementById('overallSat').value,
+      featuresText: document.getElementById('featuresText').value.trim(),
+      commentsText: document.getElementById('commentsText').value.trim()
+    };
+
+    // Validation
+    if (!newEntry.q1 || !newEntry.overallSat) {
+      alert("Please complete all rating fields before submitting.");
+      return false;
+    }
+
+    const feedbackList = loadFeedback();
+    feedbackList.unshift(newEntry);
+    saveFeedback(feedbackList);
+
+    // Clear text areas
+    document.getElementById('featuresText').value = "";
+    document.getElementById('commentsText').value = "";
+
+    // Show success message
+    const successDiv = document.getElementById('successMsg');
+    successDiv.style.display = 'block';
+    setTimeout(() => {
+      successDiv.style.display = 'none';
+    }, 5000);
+
+    // Optional: scroll to top to show thank you
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    return true;
+  }
+
+  document.getElementById('submitBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    submitFeedback();
+  });
+</script>
+</body>
+</html>
